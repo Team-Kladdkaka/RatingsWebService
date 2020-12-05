@@ -1,0 +1,2 @@
+# RatingsWebService
+SDC Ratings API
