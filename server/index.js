@@ -6,8 +6,6 @@ const dbHelper = require('./dbHelper');
 
 const port = 3001;
 
-app.use('/', express.static(path.join(__dirname, '../dist')));
-
 app.get('/reviews/:product_id/meta', (req, res) => {
   let pID = req.params.product_id;
   dbHelper.getMeta(pID, (err, data) => {
