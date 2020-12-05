@@ -58,22 +58,6 @@ module.exports = {
       });
   },
 
-  getCharacteristics: function(productId, callback) {
-    let characteristics = {};
-    db.queryAsync(`SELECT characteristic_id,name FROM characteristics WHERE product_id=${productId}`)
-      .then((result) => {
-        console.log(result[0]);
-        result[0].map(char => {
-          characteristics[char.name] = {'id': char.characteristic_id};
-        });
-        //db.queryAsync(`SELECT value FROM characteristicsReview WHERE characteristic_id=${result[0][0]}`)
-        callback(null, result);
-      })
-      .error(error => {
-        callback(error, results);
-      });
-  },
-
   getReviews: function(productId, sort, callback) {
     let results = {};
     let sortBy = '';
@@ -95,7 +79,6 @@ module.exports = {
         results.results.map((review) => {
           review.photos = [];
           allPhotos[0].map(photo => {
-            console.log('meow', photo);
             if (review.review_id === photo.review_id) {
               let aPhoto = {'id': photo.id, 'url': photo.url};
               review.photos.push(aPhoto);

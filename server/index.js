@@ -12,6 +12,7 @@ app.get('/reviews/:product_id/meta', (req, res) => {
     if (err) {
       throw err;
     } else {
+      console.log('success meow');
       res.json(data);
     }
   });
@@ -24,6 +25,7 @@ app.get('/reviews/:product_id/sort/:sort', (req, res) => {
     if (err) {
       throw err;
     } else {
+      console.log('success meow');
       res.json(data);
     }
   });
@@ -35,6 +37,7 @@ app.get('/reviews/:product_id/ratings', (req, res) => {
     if (err) {
       throw err;
     } else {
+      console.log('success meow');
       res.json(data);
     }
   });
