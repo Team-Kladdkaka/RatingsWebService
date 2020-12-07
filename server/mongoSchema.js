@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-undef */
 const mongoose = require('mongoose');
-const db = require('./index.js');
+const db = require('../index.js');
 mongoose.Promise = global.Promise;
 
 const reviewSchema = new mongoose.Schema({

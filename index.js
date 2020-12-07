@@ -1,10 +1,12 @@
 /* eslint-disable no-undef */
 const express = require('express');
 const app = express();
-const path = require('path');
 const dbHelper = require('./dbHelper');
+const bodyParser = require('body-parser');
 
-const port = 3001;
+const port = 3002;
+
+var jsonParser = bodyParser.json();
 
 app.get('/reviews/:product_id/meta', (req, res) => {
   let pID = req.params.product_id;
@@ -76,10 +78,9 @@ app.put('/reviews/report/:review_id', (req, res) => {
   });
 });
 
-app.post('/reviews/:product_id', (req, res) => {
+app.post('/reviews/:product_id', jsonParser, (req, res) => {
   let pID = req.params.product_id;
-  console.log(req);
-  dbHelper.addReview(pID, req.body, (err) => {
+  dbHelper.addReview(pID, req.body.review, (err) => {
     if (err) {
       res.sendStatus(501);
     } else {
