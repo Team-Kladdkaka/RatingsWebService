@@ -1,7 +1,7 @@
 FROM node:8.0
 RUN mkdir /RatingsWebService
-ADD . /RatingsWebService
 WORKDIR /RatingsWebService
+COPY . /RatingsWebService
 RUN npm install
 
 EXPOSE 8000

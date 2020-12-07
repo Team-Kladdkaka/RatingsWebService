@@ -76,4 +76,16 @@ app.put('/reviews/report/:review_id', (req, res) => {
   });
 });
 
+app.post('/reviews/:product_id', (req, res) => {
+  let pID = req.params.product_id;
+  console.log(req);
+  dbHelper.addReview(pID, req.body, (err) => {
+    if (err) {
+      res.sendStatus(501);
+    } else {
+      res.sendStatus(204);
+    }
+  });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));

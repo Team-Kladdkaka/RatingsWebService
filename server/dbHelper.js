@@ -115,6 +115,16 @@ module.exports = {
   addReview: function(productId, review, callback) {
     db.queryAsync(`INSERT INTO allReviews VALUES (${productId}, ${review.rating}, ${review.date}, ${review.summary}, ${review.body}, ${review.recommend}, 0, ${review.reviewer_name}, ${review.reviewer_email}, null, 0)`)
       .then(() => {
+        if (review.photos.length > 0) {
+          return db.queryAsync('SELECT MAX(review_id) FROM allReviews');
+        } else {
+          callback(null);
+        }
+      })
+      .then((result) => {
+        return db.queryAsync(`DECLARE @count INT SET @count=0 WHILE (@count <= ${review.photos.length - 1}) BEGIN INSERT INTO photos(review_id, url) VALUES (${result[0][0]}, ${review.photos['@count'].url}) SET @count = @count + 1 END`);
+      })
+      .then(() => {
         callback(null);
       })
       .error(error => {
