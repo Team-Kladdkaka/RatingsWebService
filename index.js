@@ -8,8 +8,10 @@ const port = 3002;
 
 var jsonParser = bodyParser.json();
 
+
 app.get('/reviews/:product_id/meta', (req, res) => {
   let pID = req.params.product_id;
+  console.log('meow');
   dbHelper.getMeta(pID, (err, data) => {
     if (err) {
       throw err;

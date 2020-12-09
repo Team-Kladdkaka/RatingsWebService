@@ -3,8 +3,9 @@ const mysql = require('mysql');
 const Promise = require('bluebird');
 const database = 'CatwalkRatings';
 const connect = mysql.createConnection({
-  host: 'localhost',
+  host: '3.15.209.217',
   user: 'root',
+  password: '',
   dialect: 'mysql'
 });
 
