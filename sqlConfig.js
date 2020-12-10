@@ -13,7 +13,7 @@ const connect = mysql.createPool({
 
 const db = Promise.promisifyAll(connect, {multiArgs: true});
 
-db.connectAsync()
+db.getConnectionAsync()
   .then(() => console.log('CONNECTION ESTABLISHED'))
   .error(error => {
     console.log('CONNECTION ERROR', error);
