@@ -67,7 +67,7 @@ module.exports = {
       sortBy = 'date_added';
     } else {
       // eslint-disable-next-line quotes
-      sortBy = `helpfulness,date`;
+      sortBy = `helpfulness,date_added`;
     }
     results.product_id = productId.toString();
     db.queryAsync(`SELECT review_id,rating,date_added,summary,body,recommend,reviewer_name,response,helpfulness FROM allReviews WHERE product_id=${productId} AND reported=0 ORDER BY ${sortBy} DESC`)
@@ -117,7 +117,6 @@ module.exports = {
     db.queryAsync(`INSERT INTO allReviews (product_id, rating, date_added, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) VALUES (${productId}, ${review.rating}, ${review.date}, ${review.summary}, ${review.body}, ${review.recommend}, 0, ${review.reviewer_name}, ${review.reviewer_email}, null, 0)`)
       .then(() => {
         if (review.photos.length > 0) {
-          console.log('meow');
           return db.queryAsync('SELECT MAX(review_id) FROM allReviews');
         } else {
           callback(null);

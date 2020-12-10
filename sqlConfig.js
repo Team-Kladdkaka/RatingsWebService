@@ -5,7 +5,7 @@ const database = 'CatwalkRatings';
 const connect = mysql.createConnection({
   host: '3.15.209.217',
   user: 'root',
-  password: '',
+  password: 'BM0football',
   dialect: 'mysql'
 });
 
