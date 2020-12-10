@@ -4,3 +4,5 @@ SDC-DB.pem
 SDC-Service.pem
 SDC-Service.pem:Zone.Identifier
 SDC-DB.pem:Zone.Identifier
+report100.json
+report1000.json
